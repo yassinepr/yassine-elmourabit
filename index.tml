@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Portfolio – Yassine</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;max-width:900px;margin:40px auto;padding:0 16px;line-height:1.6}
+    header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    .card{border:1px solid #e5e7eb;border-radius:14px;padding:16px}
+    .btn{display:inline-block;padding:8px 12px;border:1px solid #111;border-radius:10px;text-decoration:none}
+    h1,h2{margin:6px 0 10px}
+    small{color:#6b7280}
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Yassine – Développeur Web & Mobile</h1>
+      <small>PHP • MySQL • Node.js • ASP.NET • Unity</small>
+    </div>
+    <a class="btn" href="https://github.com/yassinepr" target="_blank">Mon GitHub</a>
+  </header>
+
+  <h2>Projets</h2>
+  <div class="grid">
+    <article class="card">
+      <h3>E-commerce PHP/MySQL</h3>
+      <p>Gestion produits, utilisateurs, panier, sessions.</p>
+      <a class="btn" href="https://github.com/yassinepr/projet-e-Commerce" target="_blank">Code source</a>
+      <!-- Si tu as une démo en ligne, ajoute: -->
+      <!-- <a class="btn" href="https://mon-ecommerce.exemple.com" target="_blank">Démo</a> -->
+    </article>
+    <!-- Duplique ce <article> pour chaque projet -->
+  </div>
+
+  <h2>Contact</h2>
+  <p>Email : yassinelmrabete12349@gmail.com · LinkedIn : <a href="#" target="_blank">ton lien</a></p>
+</body>
+</html>
