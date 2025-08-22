@@ -1,41 +1,74 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <title>Portfolio – Yassine</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;max-width:900px;margin:40px auto;padding:0 16px;line-height:1.6}
-    header{display:flex;justify-content:space-between;align-items:center;gap:12px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-    .card{border:1px solid #e5e7eb;border-radius:14px;padding:16px}
-    .btn{display:inline-block;padding:8px 12px;border:1px solid #111;border-radius:10px;text-decoration:none}
-    h1,h2{margin:6px 0 10px}
-    small{color:#6b7280}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Projets</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+        }
+        header {
+            background: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        section {
+            padding: 40px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .gallery img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div>
-      <h1>Yassine – Développeur Web & Mobile</h1>
-      <small>PHP • MySQL • Node.js • ASP.NET • Unity</small>
+
+<header>
+    <h1>Mon Portfolio</h1>
+</header>
+
+<section>
+    <h2>Projet Hôtel</h2>
+    <div class="gallery">
+        <img src="images/hotel1.jpg" alt="Hôtel 1">
+        <img src="images/hotel2.jpg" alt="Hôtel 2">
+        <img src="images/hotel3.jpg" alt="Hôtel 3">
+        <img src="images/hotel4.jpg" alt="Hôtel 4">
+        <img src="images/hotel5.jpg" alt="Hôtel 5">
     </div>
-    <a class="btn" href="https://github.com/yassinepr" target="_blank">Mon GitHub</a>
-  </header>
+</section>
 
-  <h2>Projets</h2>
-  <div class="grid">
-    <article class="card">
-      <h3>E-commerce PHP/MySQL</h3>
-      <p>Gestion produits, utilisateurs, panier, sessions.</p>
-      <a class="btn" href="https://github.com/yassinepr/projet-e-Commerce" target="_blank">Code source</a>
-      <!-- Si tu as une démo en ligne, ajoute: -->
-      <!-- <a class="btn" href="https://mon-ecommerce.exemple.com" target="_blank">Démo</a> -->
-    </article>
-    <!-- Duplique ce <article> pour chaque projet -->
-  </div>
+<section>
+    <h2>Projet E-commerce</h2>
+    <div class="gallery">
+        <img src="images/ecommerce1.jpg" alt="E-commerce 1">
+        <img src="images/ecommerce2.jpg" alt="E-commerce 2">
+        <img src="images/ecommerce3.jpg" alt="E-commerce 3">
+        <img src="images/ecommerce4.jpg" alt="E-commerce 4">
+    </div>
+</section>
 
-  <h2>Contact</h2>
-  <p>Email : yassinelmrabete12349@gmail.com · LinkedIn : <a href="#" target="_blank">ton lien</a></p>
+<section>
+    <h2>Projet Jeux</h2>
+    <div class="gallery">
+        <img src="images/game1.jpg" alt="Jeu 1">
+        <img src="images/game2.jpg" alt="Jeu 2">
+    </div>
+</section>
+
 </body>
 </html>
