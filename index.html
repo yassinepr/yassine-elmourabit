@@ -9,14 +9,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#f9fafb; --card:#ffffff; --ink:#111827; --muted:#6b7280;
-    --line:#e5e7eb; --accent:#2563eb; --accent-ink:#111827;
-  }
+  :root{--bg:#f9fafb;--card:#ffffff;--ink:#111827;--muted:#6b7280;--line:#e5e7eb;--accent:#2563eb;--accent-ink:#111827;}
   *{box-sizing:border-box}
   body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--ink);line-height:1.6}
   a{color:var(--accent);text-decoration:none}
-  .site-header{position:sticky;top:0;background:rgba(255,255,255,.9);border-bottom:1px solid var(--line);backdrop-filter:saturate(180%) blur(8px)}
+  .site-header{position:sticky;top:0;background:rgba(255,255,255,.9);border-bottom:1px solid var(--line);backdrop-filter:saturate(180%) blur(8px);z-index:10}
   .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
   .nav{display:flex;justify-content:space-between;align-items:center;height:64px}
   .brand{font-weight:800;font-size:20px;color:var(--accent-ink)}
@@ -40,9 +37,23 @@
   .bullets{margin:10px 0 0 18px}
   .links{display:flex;gap:10px;margin-top:12px}
   .btn.small{padding:8px 12px;border-radius:8px;font-weight:700}
+  /* Bouton "Code source" bleu */
+  .btn.small.secondary{background:var(--accent);color:#fff;border:none}
   .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:12px}
-  .gallery img{width:100%;height:150px;object-fit:cover;border-radius:10px;border:1px solid var(--line)}
+  .gallery img{width:100%;height:150px;object-fit:cover;border-radius:10px;border:1px solid var(--line);cursor:pointer;transition:transform .2s}
+  .gallery img:hover{transform:scale(1.03)}
   footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-size:14px;text-align:center}
+
+  /* Lightbox */
+  .lb-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:9999;}
+  .lb-backdrop.open{display:flex}
+  .lb-stage{position:relative;width:95vw;height:90vh;overflow:hidden;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.5);background:#000;}
+  .lb-img{display:block;position:absolute;left:0;top:0;user-select:none;will-change:transform;transform-origin:0 0;cursor:grab;max-width:none;max-height:none;}
+  .lb-toolbar{position:absolute;left:50%;transform:translateX(-50%);bottom:10px;display:flex;gap:8px;background:rgba(17,24,39,.6);padding:6px 10px;border-radius:999px;backdrop-filter:blur(6px)}
+  .lb-btn{border:none;border-radius:8px;padding:8px 10px;font-weight:700;background:#fff;cursor:pointer}
+  .lb-close,.lb-prev,.lb-next{position:absolute;top:10px;background:rgba(255,255,255,.95)}
+  .lb-close{right:10px}.lb-prev{left:10px}.lb-next{right:60px}
+  .lb-hint{position:absolute;left:50%;top:10px;transform:translateX(-50%);color:#fff;background:rgba(0,0,0,.35);padding:4px 8px;border-radius:8px;font-size:12px}
   @media (max-width:740px){.hero h1{font-size:30px}.menu{display:none}}
 </style>
 </head>
@@ -98,7 +109,7 @@
   <section id="projects">
     <div class="wrap">
       <h2 class="section-title">Projets</h2>
-      <p class="lead">Exemples de projets académiques et personnels avec descriptions, stack et captures.</p>
+      <p class="lead">Exemples de projets académiques et personnels avec descriptions, stack et captures. Cliquez sur les images pour agrandir.</p>
 
       <!-- PROJET HOTEL -->
       <article class="card">
@@ -173,6 +184,7 @@
       <h2 class="section-title">Contact</h2>
       <p class="lead">Disponible pour poste junior, stage ou freelance.</p>
       <p><strong>Email :</strong> <a href="mailto:yassine.elmourabit@gmail.com">yassine.elmourabit@gmail.com</a></p>
+      <p><strong>Téléphone :</strong> <a href="tel:+14387780089">+1 438 778 0089</a></p>
       <p><strong>GitHub :</strong> <a href="https://github.com/yassinepr" target="_blank">github.com/yassinepr</a></p>
     </div>
   </section>
@@ -182,6 +194,166 @@
   <div class="wrap">© <span id="y"></span> — Portfolio de Yassine El Mourabit</div>
 </footer>
 
-<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+<!-- LIGHTBOX -->
+<div class="lb-backdrop" id="lightbox" aria-hidden="true">
+  <div class="lb-stage">
+    <img class="lb-img" id="lbImg" alt="">
+    <div class="lb-hint">Molette/Pinch pour zoom • Double-clic pour ajuster • Échap pour fermer</div>
+    <button class="lb-btn lb-close" id="lbClose" aria-label="Fermer">✕</button>
+    <button class="lb-btn lb-prev"  id="lbPrev"  aria-label="Précédent">◀</button>
+    <button class="lb-btn lb-next"  id="lbNext"  aria-label="Suivant">▶</button>
+    <div class="lb-toolbar">
+      <button class="lb-btn" id="zoomOut">−</button>
+      <button class="lb-btn" id="zoomReset">100%</button>
+      <button class="lb-btn" id="zoomIn">+</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // année footer
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // Lightbox avec centrage + zoom précis
+  (function(){
+    const imgs = Array.from(document.querySelectorAll('.gallery img'));
+    const backdrop = document.getElementById('lightbox');
+    const stage = backdrop.querySelector('.lb-stage');
+    const imgEl = document.getElementById('lbImg');
+    const btnClose = document.getElementById('lbClose');
+    const btnPrev  = document.getElementById('lbPrev');
+    const btnNext  = document.getElementById('lbNext');
+    const btnIn    = document.getElementById('zoomIn');
+    const btnOut   = document.getElementById('zoomOut');
+    const btnReset = document.getElementById('zoomReset');
+
+    let idx = 0;
+    let fitScale = 1;     // échelle pour que l’image tienne DANS la scène
+    let userScale = 1;    // zoom utilisateur
+    let posX = 0, posY = 0; // translation de l’image (origine en haut-gauche)
+    let dragging = false, startX = 0, startY = 0;
+
+    function stageSize(){ return { w: stage.clientWidth, h: stage.clientHeight }; }
+    function imgSize(){ return { w: imgEl.naturalWidth, h: imgEl.naturalHeight }; }
+    function totalScale(){ return fitScale * userScale; }
+
+    function apply(){
+      imgEl.style.transform = `translate(${posX}px, ${posY}px) scale(${totalScale()})`;
+    }
+
+    // Centre l'image dans la scène à l'échelle "fit"
+    function centerFit(){
+      const ss = stageSize(); const isz = imgSize();
+      fitScale = Math.min(ss.w / isz.w, ss.h / isz.h);
+      userScale = 1;
+      const displayW = isz.w * fitScale;
+      const displayH = isz.h * fitScale;
+      posX = (ss.w - displayW) / 2;
+      posY = (ss.h - displayH) / 2;
+      apply();
+    }
+
+    function openAt(i){
+      idx = i;
+      imgEl.src = imgs[idx].getAttribute('src');
+      imgEl.onload = centerFit;
+      backdrop.classList.add('open');
+      backdrop.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close(){
+      backdrop.classList.remove('open');
+      backdrop.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+    }
+
+    function prev(){ openAt((idx - 1 + imgs.length) % imgs.length); }
+    function next(){ openAt((idx + 1) % imgs.length); }
+
+    // Conserver le point sous le curseur au zoom
+    function zoomAt(clientX, clientY, factor){
+      const beforeScale = totalScale();
+      const afterUser   = Math.min(Math.max(userScale * factor, 0.2), 10);
+      const afterScale  = fitScale * afterUser;
+
+      // Coordonnées du curseur dans la scène
+      const rect = stage.getBoundingClientRect();
+      const sx = clientX - rect.left;
+      const sy = clientY - rect.top;
+
+      // Point de l'image sous le curseur AVANT
+      const ix = (sx - posX) / beforeScale;
+      const iy = (sy - posY) / beforeScale;
+
+      userScale = afterUser;
+
+      // Recalcule la position pour garder (ix,iy) sous (sx,sy)
+      posX = sx - ix * afterScale;
+      posY = sy - iy * afterScale;
+      apply();
+    }
+
+    // Drag (pan)
+    imgEl.addEventListener('mousedown', (e)=>{
+      dragging = true; imgEl.style.cursor='grabbing';
+      startX = e.clientX - posX; startY = e.clientY - posY;
+      e.preventDefault();
+    });
+    window.addEventListener('mousemove', (e)=>{
+      if(!dragging) return;
+      posX = e.clientX - startX;
+      posY = e.clientY - startY;
+      apply();
+    });
+    window.addEventListener('mouseup', ()=>{ dragging = false; imgEl.style.cursor='grab'; });
+
+    // Molette : zoom vers le pointeur
+    stage.addEventListener('wheel', (e)=>{
+      if(!backdrop.classList.contains('open')) return;
+      e.preventDefault();
+      const factor = e.deltaY > 0 ? 1/1.15 : 1.15;
+      zoomAt(e.clientX, e.clientY, factor);
+    }, { passive:false });
+
+    // Double-clic : 100% <-> 200% centré souris
+    stage.addEventListener('dblclick', (e)=>{
+      const targetScale = (userScale <= 1) ? 2 : 1;
+      zoomAt(e.clientX, e.clientY, targetScale / userScale);
+    });
+
+    // Contrôles
+    btnIn.onclick  = ()=> zoomAt(stage.getBoundingClientRect().left + stage.clientWidth/2, stage.getBoundingClientRect().top + stage.clientHeight/2, 1.2);
+    btnOut.onclick = ()=> zoomAt(stage.getBoundingClientRect().left + stage.clientWidth/2, stage.getBoundingClientRect().top + stage.clientHeight/2, 1/1.2);
+    btnReset.onclick = ()=> centerFit();
+    btnClose.onclick = close;
+    btnPrev.onclick  = prev;
+    btnNext.onclick  = next;
+
+    // Fermer en cliquant l’arrière-plan
+    backdrop.addEventListener('click', (e)=>{ if(e.target === backdrop) close(); });
+
+    // Navigation clavier
+    window.addEventListener('keydown', (e)=>{
+      if(!backdrop.classList.contains('open')) return;
+      if(e.key === 'Escape') close();
+      if(e.key === 'ArrowLeft') prev();
+      if(e.key === 'ArrowRight') next();
+      if(e.key === '+') zoomAt(stage.getBoundingClientRect().left + stage.clientWidth/2, stage.getBoundingClientRect().top + stage.clientHeight/2, 1.2);
+      if(e.key === '-') zoomAt(stage.getBoundingClientRect().left + stage.clientWidth/2, stage.getBoundingClientRect().top + stage.clientHeight/2, 1/1.2);
+      if(e.key === '0') centerFit();
+    });
+
+    // Ouvrir depuis les miniatures
+    imgs.forEach((im, i)=>{
+      im.addEventListener('click', ()=> openAt(i));
+      im.setAttribute('tabindex','0');
+      im.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openAt(i); }});
+    });
+
+    // Refit si la fenêtre change
+    window.addEventListener('resize', ()=>{ if(backdrop.classList.contains('open')) centerFit(); });
+  })();
+</script>
 </body>
 </html>
