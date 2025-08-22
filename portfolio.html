@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Portfolio — Yassine El Mourabit</title>
+<meta name="description" content="Portfolio de Yassine El Mourabit — Développeur Web & Mobile. Projets: Hôtel, E-commerce, Jeux." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f9fafb; --card:#ffffff; --ink:#111827; --muted:#6b7280;
+    --line:#e5e7eb; --accent:#2563eb; --accent-ink:#111827;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--ink);line-height:1.6}
+  a{color:var(--accent);text-decoration:none}
+  .site-header{position:sticky;top:0;background:rgba(255,255,255,.9);border-bottom:1px solid var(--line);backdrop-filter:saturate(180%) blur(8px)}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+  .nav{display:flex;justify-content:space-between;align-items:center;height:64px}
+  .brand{font-weight:800;font-size:20px;color:var(--accent-ink)}
+  .menu a{margin-left:20px;font-weight:600}
+  .hero{padding:60px 0;background:linear-gradient(180deg,#fff,transparent)}
+  .hero h1{font-size:40px;margin:0 0 12px}
+  .hero h1 span{color:var(--accent)}
+  .sub{color:var(--muted);max-width:760px}
+  .chips{margin-top:16px;display:flex;flex-wrap:wrap;gap:10px}
+  .chip{background:#eef2ff;border:1px solid #dbeafe;color:#1e40af;padding:6px 12px;border-radius:999px;font-weight:600}
+  .cta{margin-top:20px}
+  .btn{display:inline-block;background:var(--accent);color:#fff;padding:10px 16px;border-radius:10px;font-weight:700}
+  .btn.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}
+  section{padding:50px 0}
+  h2.section-title{margin:0 0 18px;font-size:26px;color:var(--accent-ink)}
+  p.lead{color:var(--muted);max-width:800px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.05);margin-bottom:20px}
+  .card-body{padding:16px}
+  .card h3{margin:0 0 8px}
+  .meta{color:var(--muted);font-size:14px;font-weight:600}
+  .bullets{margin:10px 0 0 18px}
+  .links{display:flex;gap:10px;margin-top:12px}
+  .btn.small{padding:8px 12px;border-radius:8px;font-weight:700}
+  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:12px}
+  .gallery img{width:100%;height:150px;object-fit:cover;border-radius:10px;border:1px solid var(--line)}
+  footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-size:14px;text-align:center}
+  @media (max-width:740px){.hero h1{font-size:30px}.menu{display:none}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="nav">
+      <div class="brand">Yassine <span style="color:var(--accent)">El Mourabit</span></div>
+      <nav class="menu">
+        <a href="#about">À propos</a>
+        <a href="#projects">Projets</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <h1>Développeur <span>Web & Mobile</span></h1>
+      <p class="sub">
+        Diplômé AEC (Institut Teccart, 2024). Je développe des applications modernes et performantes (front & back),
+        avec un accent sur la qualité, la sécurité et l’expérience utilisateur.
+      </p>
+      <div class="chips">
+        <span class="chip">ASP.NET Core / C#</span><span class="chip">Node.js / Express</span>
+        <span class="chip">React</span><span class="chip">SQL Server / MongoDB</span>
+        <span class="chip">Linux / Bash</span><span class="chip">Git / GitHub</span>
+      </div>
+      <div class="cta">
+        <a class="btn" href="assets/CV_Yassine_ElMourabit.pdf" target="_blank">Télécharger mon CV</a>
+        <a class="btn secondary" href="#projects">Voir mes projets</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <h2 class="section-title">À propos</h2>
+      <p class="lead">
+        Polyvalent en front-end, back-end et bases de données. Solides connaissances en Linux/Unix et déploiement.
+        Expérience en gestion d’incidents, service à la clientèle et procédures. Ouvert aux postes juniors en
+        développement, support applicatif ou DevOps/SRE junior.
+      </p>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <h2 class="section-title">Projets</h2>
+      <p class="lead">Exemples de projets académiques et personnels avec descriptions, stack et captures.</p>
+
+      <!-- PROJET HOTEL -->
+      <article class="card">
+        <div class="gallery">
+          <img src="images/1.png" alt="Projet Hôtel capture 1">
+          <img src="images/2.png" alt="Projet Hôtel capture 2">
+          <img src="images/3.png" alt="Projet Hôtel capture 3">
+          <img src="images/4.png" alt="Projet Hôtel capture 4">
+          <img src="images/5.png" alt="Projet Hôtel capture 5">
+        </div>
+        <div class="card-body">
+          <h3><a href="https://github.com/yassinepr/projet-hotel" target="_blank">Système de Gestion d’Hôtel</a></h3>
+          <div class="meta">ASP.NET Core • Entity Framework • SQL Server</div>
+          <ul class="bullets">
+            <li>Application complète : réservations, gestion chambres, tableau de bord admin.</li>
+            <li>CRUD, rôles utilisateurs, validations et sécurité.</li>
+            <li>Base SQL relationnelle avec migrations EF.</li>
+          </ul>
+          <div class="links">
+            <a class="btn small secondary" target="_blank" href="https://github.com/yassinepr/projet-hotel">Code source</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJET ECOMMERCE -->
+      <article class="card">
+        <div class="gallery">
+          <img src="images/A.png" alt="Projet E-commerce capture A">
+          <img src="images/B.png" alt="Projet E-commerce capture B">
+          <img src="images/C.png" alt="Projet E-commerce capture C">
+          <img src="images/D.png" alt="Projet E-commerce capture D">
+        </div>
+        <div class="card-body">
+          <h3><a href="https://github.com/yassinepr/projet-e-Commerce" target="_blank">Plateforme E-commerce</a></h3>
+          <div class="meta">Node.js • Express • MongoDB</div>
+          <ul class="bullets">
+            <li>Catalogue produits, panier et commandes sécurisées.</li>
+            <li>API REST (JWT), rôles (admin/client), validations.</li>
+            <li>Dashboard admin pour gestion inventaire et catégories.</li>
+          </ul>
+          <div class="links">
+            <a class="btn small secondary" target="_blank" href="https://github.com/yassinepr/projet-e-Commerce">Code source</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJET JEUX -->
+      <article class="card">
+        <div class="gallery">
+          <img src="images/J1.png" alt="Projet Jeux capture J1">
+          <img src="images/J2.png" alt="Projet Jeux capture J2">
+        </div>
+        <div class="card-body">
+          <h3><a href="https://github.com/yassinepr/GAME-WEBSITE" target="_blank">Jeux Portal</a></h3>
+          <div class="meta">Node.js • Express • EJS</div>
+          <ul class="bullets">
+            <li>Mini-jeux (Snake, 2048, Pong) avec interface claire et responsive.</li>
+            <li>Recherche et filtres pour catalogue.</li>
+            <li>Structure extensible avec rôles et gestion contenu.</li>
+          </ul>
+          <div class="links">
+            <a class="btn small secondary" target="_blank" href="https://github.com/yassinepr/GAME-WEBSITE">Code source</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <h2 class="section-title">Contact</h2>
+      <p class="lead">Disponible pour poste junior, stage ou freelance.</p>
+      <p><strong>Email :</strong> <a href="mailto:yassine.elmourabit@gmail.com">yassine.elmourabit@gmail.com</a></p>
+      <p><strong>GitHub :</strong> <a href="https://github.com/yassinepr" target="_blank">github.com/yassinepr</a></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="y"></span> — Portfolio de Yassine El Mourabit</div>
+</footer>
+
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
