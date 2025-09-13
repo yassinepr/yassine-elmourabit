@@ -5,15 +5,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Portfolio — Yassine El Mourabit</title>
 <meta name="description" content="Portfolio de Yassine El Mourabit — Développeur Web & Mobile. Projets: Hôtel, E-commerce, Jeux." />
-
-<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
-<!-- Icons (Font Awesome 6) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
 <style>
   :root{
     --bg:#f5f7fb;
@@ -73,8 +68,6 @@
   .contact-item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;align-items:center;gap:10px}
   .contact-item i{width:22px;text-align:center;color:var(--accent)}
   footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:14px;text-align:center}
-
-  /* Lightbox */
   .lb-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:9999;}
   .lb-backdrop.open{display:flex}
   .lb-stage{position:relative;width:95vw;height:90vh;overflow:hidden;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.5);background:#000;}
@@ -91,7 +84,6 @@
 </style>
 </head>
 <body>
-
 <header class="site-header">
   <div class="wrap">
     <div class="nav">
@@ -108,9 +100,7 @@
     </div>
   </div>
 </header>
-
 <main>
-  <!-- HERO -->
   <section class="hero">
     <div class="wrap">
       <h1 data-i18n="hero.title">Développeur <span>Web & Mobile</span></h1>
@@ -118,7 +108,6 @@
         Diplômé AEC (Institut Teccart, 2024). Je développe des applications modernes et performantes (front & back),
         avec un accent sur la qualité, la sécurité et l’expérience utilisateur.
       </p>
-
       <div class="chips" aria-label="Stack technique">
         <span class="chip"><i class="fa-solid fa-code"></i> ASP.NET Core / C#</span>
         <span class="chip"><i class="fa-brands fa-node"></i> Node.js / Express</span>
@@ -127,7 +116,6 @@
         <span class="chip"><i class="fa-brands fa-linux"></i> Linux / Bash</span>
         <span class="chip"><i class="fa-brands fa-git-alt"></i> Git / GitHub</span>
       </div>
-
       <div class="cta">
         <a class="btn" href="YASSINE_ELMOURABIT_FR.pdf" target="_blank"><i class="fa-solid fa-file-arrow-down"></i> <span data-i18n="hero.cvfr">CV (Français)</span></a>
         <a class="btn ghost" href="YASSINE_ELMOURABIT_ENG.pdf" target="_blank"><i class="fa-solid fa-file-arrow-down"></i> <span data-i18n="hero.cven">CV (English)</span></a>
@@ -135,8 +123,6 @@
       </div>
     </div>
   </section>
-
-  <!-- ABOUT -->
   <section id="about">
     <div class="wrap">
       <h2 class="section-title" data-i18n="about.title">À propos</h2>
@@ -147,14 +133,10 @@
       </p>
     </div>
   </section>
-
-  <!-- PROJECTS -->
   <section id="projects">
     <div class="wrap">
       <h2 class="section-title" data-i18n="projects.title">Projets</h2>
       <p class="lead" data-i18n="projects.lead">Exemples de projets académiques et personnels avec descriptions, stack et captures. Cliquez sur les images pour agrandir.</p>
-
-      <!-- PROJET HOTEL -->
       <article class="card">
         <div class="gallery" aria-label="Captures Système Hôtel">
           <img src="images/1.png" alt="Projet Hôtel capture 1">
@@ -176,8 +158,6 @@
           </div>
         </div>
       </article>
-
-      <!-- PROJET ECOMMERCE -->
       <article class="card">
         <div class="gallery" aria-label="Captures E-commerce">
           <img src="images/A.png" alt="Projet E-commerce capture A">
@@ -198,8 +178,6 @@
           </div>
         </div>
       </article>
-
-      <!-- PROJET JEUX -->
       <article class="card">
         <div class="gallery" aria-label="Captures Jeux Portal">
           <img src="images/J1.png" alt="Projet Jeux capture J1">
@@ -220,13 +198,10 @@
       </article>
     </div>
   </section>
-
-  <!-- CONTACT -->
   <section id="contact">
     <div class="wrap">
       <h2 class="section-title" data-i18n="contact.title">Contact</h2>
       <p class="lead" data-i18n="contact.lead">Disponible pour poste junior, stage ou freelance.</p>
-
       <div class="contact-list">
         <div class="contact-item">
           <i class="fa-solid fa-envelope"></i>
@@ -244,12 +219,9 @@
     </div>
   </section>
 </main>
-
 <footer>
   <div class="wrap">© <span id="y"></span> — <span data-i18n="footer">Portfolio de Yassine El Mourabit</span></div>
 </footer>
-
-<!-- LIGHTBOX -->
 <div class="lb-backdrop" id="lightbox" aria-hidden="true">
   <div class="lb-stage">
     <img class="lb-img" id="lbImg" alt="">
@@ -264,12 +236,8 @@
     </div>
   </div>
 </div>
-
 <script>
-  // année footer
   document.getElementById('y').textContent = new Date().getFullYear();
-
-  // --------- I18N ----------
   const I18N = {
     fr: {
       "nav.about":"À propos",
@@ -318,7 +286,6 @@
       "lightbox.hint":"Scroll/Pinch to zoom • Double-click to fit • Escape to close"
     }
   };
-
   function applyI18n(lang){
     const dict = I18N[lang] || I18N.fr;
     document.querySelectorAll('[data-i18n]').forEach(el=>{
@@ -330,14 +297,9 @@
     document.documentElement.lang = (lang === 'en' ? 'en' : 'fr');
     localStorage.setItem('lang', lang);
   }
-
   document.getElementById('langFr').addEventListener('click', ()=>applyI18n('fr'));
   document.getElementById('langEn').addEventListener('click', ()=>applyI18n('en'));
-
-  // Initial language
   applyI18n(localStorage.getItem('lang') || 'fr');
-
-  // --------- LIGHTBOX ----------
   (function(){
     const imgs = Array.from(document.querySelectorAll('.gallery img'));
     const backdrop = document.getElementById('lightbox');
@@ -349,18 +311,15 @@
     const btnIn    = document.getElementById('zoomIn');
     const btnOut   = document.getElementById('zoomOut');
     const btnReset = document.getElementById('zoomReset');
-
     let idx = 0;
     let fitScale = 1;
     let userScale = 1;
     let posX = 0, posY = 0;
     let dragging = false, startX = 0, startY = 0;
-
     function stageSize(){ return { w: stage.clientWidth, h: stage.clientHeight }; }
     function imgSize(){ return { w: imgEl.naturalWidth, h: imgEl.naturalHeight }; }
     function totalScale(){ return fitScale * userScale; }
     function apply(){ imgEl.style.transform = `translate(${posX}px, ${posY}px) scale(${totalScale()})`; }
-
     function centerFit(){
       const ss = stageSize(), isz = imgSize();
       fitScale = Math.min(ss.w / isz.w, ss.h / isz.h);
@@ -370,7 +329,6 @@
       posY = (ss.h - displayH) / 2;
       apply();
     }
-
     function openAt(i){
       idx = i;
       imgEl.src = imgs[idx].getAttribute('src');
@@ -386,24 +344,19 @@
     }
     function prev(){ openAt((idx - 1 + imgs.length) % imgs.length); }
     function next(){ openAt((idx + 1) % imgs.length); }
-
     function zoomAt(clientX, clientY, factor){
       const beforeScale = totalScale();
       const afterUser   = Math.min(Math.max(userScale * factor, 0.2), 10);
       const afterScale  = fitScale * afterUser;
-
       const rect = stage.getBoundingClientRect();
       const sx = clientX - rect.left, sy = clientY - rect.top;
-
       const ix = (sx - posX) / beforeScale;
       const iy = (sy - posY) / beforeScale;
-
       userScale = afterUser;
       posX = sx - ix * afterScale;
       posY = sy - iy * afterScale;
       apply();
     }
-
     imgEl.addEventListener('mousedown', (e)=>{
       dragging = true; imgEl.style.cursor='grabbing';
       startX = e.clientX - posX; startY = e.clientY - posY; e.preventDefault();
@@ -413,26 +366,21 @@
       posX = e.clientX - startX; posY = e.clientY - startY; apply();
     });
     window.addEventListener('mouseup', ()=>{ dragging = false; imgEl.style.cursor='grab'; });
-
     stage.addEventListener('wheel', (e)=>{
       if(!backdrop.classList.contains('open')) return;
       e.preventDefault();
       const factor = e.deltaY > 0 ? 1/1.15 : 1.15;
       zoomAt(e.clientX, e.clientY, factor);
     }, { passive:false });
-
     stage.addEventListener('dblclick', (e)=>{
       const targetScale = (userScale <= 1) ? 2 : 1;
       zoomAt(e.clientX, e.clientY, targetScale / userScale);
     });
-
     btnIn.onclick  = ()=> zoomAt(stage.getBoundingClientRect().left + stage.clientWidth/2, stage.getBoundingClientRect().top + stage.clientHeight/2, 1.2);
     btnOut.onclick = ()=> zoomAt(stage.getBoundingClientRect().left + stage.clientWidth/2, stage.getBoundingClientRect().top + stage.clientHeight/2, 1/1.2);
     btnReset.onclick = ()=> centerFit();
     btnClose.onclick = close; btnPrev.onclick  = prev; btnNext.onclick  = next;
-
     backdrop.addEventListener('click', (e)=>{ if(e.target === backdrop) close(); });
-
     window.addEventListener('keydown', (e)=>{
       if(!backdrop.classList.contains('open')) return;
       if(e.key === 'Escape') close();
@@ -442,13 +390,11 @@
       if(e.key === '-') zoomAt(stage.getBoundingClientRect().left + stage.clientHeight/2, stage.getBoundingClientRect().top + stage.clientHeight/2, 1/1.2);
       if(e.key === '0') centerFit();
     });
-
     imgs.forEach((im, i)=>{
       im.addEventListener('click', ()=> openAt(i));
       im.setAttribute('tabindex','0');
       im.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openAt(i); }});
     });
-
     window.addEventListener('resize', ()=>{ if(backdrop.classList.contains('open')) centerFit(); });
   })();
 </script>
